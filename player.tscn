@@ -1,7 +1,28 @@
-[gd_scene load_steps=13 format=3 uid="uid://dg1i2c7046my5"]
+[gd_scene load_steps=15 format=3 uid="uid://dg1i2c7046my5"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_seviu"]
 [ext_resource type="Texture2D" uid="uid://crlxgmc1qxe7t" path="res://player.png" id="2_yft7w"]
+
+[sub_resource type="GDScript" id="GDScript_ogbps"]
+script/source = "class_name PlayerMovementData1
+extends Resource
+
+@export var speed = 100.0
+@export var acceleration = 800.0
+@export var friction = 1000.0
+@export var jump_velocity = -300.0
+@export var gravity_scale = 2.0
+@export var air_resistance = 200.0
+"
+
+[sub_resource type="Resource" id="Resource_cfyeb"]
+script = SubResource("GDScript_ogbps")
+speed = 100.0
+acceleration = 800.0
+friction = 1000.0
+jump_velocity = -300.0
+gravity_scale = 1.0
+air_resistance = 200.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_j0yv6"]
 atlas = ExtResource("2_yft7w")
@@ -84,6 +105,7 @@ size = Vector2(8, 15)
 floor_constant_speed = true
 floor_snap_length = 2.0
 script = ExtResource("1_seviu")
+movement_data = SubResource("Resource_cfyeb")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -10)
